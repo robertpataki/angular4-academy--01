@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
     <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
       <a href="#" class="navbar-brand">Keep Clone</a>
     </nav>
+    <div class="container-fluid text-center pb-5">
+      <div class="row justify-content-end">
+        <app-new-card-input (onCardAdd)="addCard($event)"></app-new-card-input>
+      </div>
+    </div>
     <app-card-list [cards]="cards"></app-card-list>
   `
 })
@@ -22,4 +27,8 @@ export class AppComponent {
     { text: 'Card 9' },
     { text: 'Card 10', pinned: true }
   ];
+
+  addCard(cardText: string) {
+    this.cards.push({ text: cardText });
+  }
 }
